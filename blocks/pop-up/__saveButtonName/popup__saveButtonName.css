@@ -1,0 +1,14 @@
+.popup__saveButtonName {
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  margin: 0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .popup__saveButtonName {
+    font-size: 14px;
+    line-height: 16.94px;
+  }
+}

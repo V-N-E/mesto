@@ -1,0 +1,19 @@
+.profile__nameAndButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 336px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .profile__nameAndButton {
+    width: 320px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .profile__nameAndButton {
+    width: 217px;
+  }
+}

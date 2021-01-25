@@ -1,0 +1,8 @@
+.elements__nameAndLike {
+  display: flex;
+  width: 246px;
+  min-height: 23px;
+  flex-direction: row;
+  margin: 25px 15px 0 21px;
+  justify-content: space-between;
+}
