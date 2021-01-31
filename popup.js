@@ -1,36 +1,41 @@
-let popup = document.querySelector('.popup');
-let popupOpen = document.querySelector('.profile__edit-button');
-let popupClose = document.querySelector('.popup__close-button');
-let popupSaveAndClose = document.querySelector('.popup__save-button');
+const $modal = document.getElementById('popup');
+const $editButton = document.getElementById('profileEdit');
+const $closeModalButton = document.getElementById('closePopup');
+const $editForm = document.getElementById('popupForm');
+const $inputs = {
+  $name: $modal.querySelector('#popupName'),
+  $description: $modal.querySelector('#popupDescription'),
+};
 
-popupOpen.onclick = function() {
-  popup.style.display="block";
-}
+const $textName = document.getElementById('profileName');
+const $textDescription = document.getElementById('profileDescription');
 
-popupClose.onclick = function() {
-  popup.style.display="none";
-}
+console.log({$modal, $editButton});
 
-popupSaveAndClose.onclick = function() {
-  popup.style.display="none";
-}
+$editButton.addEventListener('click', e => {
+  $modal.classList.remove('popup_closed');
+  const initialNameTextContent = $textName.textContent;
+  const initialDescriptionTextContent = $textDescription.textContent;
+  
+  $inputs.$name.value = initialNameTextContent;
+  $inputs.$description.value = initialDescriptionTextContent;
+  console.log({initialNameTextContent, initialDescriptionTextContent})
+});
 
-let formElement = document.querySelector('.popup__form');
+$closeModalButton.addEventListener('click', e => {
+  $modal.classList.add('popup_closed');
+});
 
-let nameInput = document.querySelector('.popup__name-input');
-let descriptionInput = document.querySelector('.popup__description-input');
+$editForm.addEventListener('submit', e => {
+  e.preventDefault();
+  $textName.textContent = $inputs.$name.value;
+  $textDescription.textContent = $inputs.$description.value;
 
-function formSubmitHandler (evt) {
-    evt.preventDefault();
+  $modal.classList.add('popup_closed');
+})
 
-    let nameValue = document.querySelector('.popup__name-input').value;
-    let descriptionValue = document.querySelector('.popup__description-input').value;
-
-    let name = document.querySelector('.profile__name');
-    let description = document.querySelector('.profile__description');
-
-    name.textContent = nameValue;
-    description.textContent = descriptionValue;
-}
-
-formElement.addEventListener('submit', formSubmitHandler);
+$modal.addEventListener('click', event => {
+  if (event.target.id === 'popup') {
+      $modal.classList.add('popup_closed');
+  }
+})
