@@ -1,41 +1,30 @@
-const $modal = document.getElementById('popup');
-const $editButton = document.getElementById('profileEdit');
-const $closeModalButton = document.getElementById('closePopup');
-const $editForm = document.getElementById('popupForm');
-const $inputs = {
-  $name: $modal.querySelector('#popupName'),
-  $description: $modal.querySelector('#popupDescription'),
-};
+const modal = document.querySelector('.popup');
+const editButton = document.querySelector('.profile__edit-button');
+const closeModalButton = document.querySelector('.popup__close-button');
+const editForm = document.querySelector('.popup__form');
+const nameInput = document.querySelector('.popup__input_enter_name');
+const descriptionInput = document.querySelector('.popup__input_enter_description');
+const textName = document.querySelector('.profile__name');
+const textDescription = document.querySelector('.profile__description');
 
-const $textName = document.getElementById('profileName');
-const $textDescription = document.getElementById('profileDescription');
+editButton.addEventListener('click', edit);
+function edit() {
+  modal.classList.remove('popup_closed');
 
-console.log({$modal, $editButton});
+  nameInput.value = textName.textContent;
+  descriptionInput.value = textDescription.textContent;
+}
 
-$editButton.addEventListener('click', e => {
-  $modal.classList.remove('popup_closed');
-  const initialNameTextContent = $textName.textContent;
-  const initialDescriptionTextContent = $textDescription.textContent;
-  
-  $inputs.$name.value = initialNameTextContent;
-  $inputs.$description.value = initialDescriptionTextContent;
-  console.log({initialNameTextContent, initialDescriptionTextContent})
-});
+closeModalButton.addEventListener('click', close);
+function close() {
+  modal.classList.add('popup_closed');
+}
 
-$closeModalButton.addEventListener('click', e => {
-  $modal.classList.add('popup_closed');
-});
-
-$editForm.addEventListener('submit', e => {
+editForm.addEventListener('submit', form); 
+function form(e) {
   e.preventDefault();
-  $textName.textContent = $inputs.$name.value;
-  $textDescription.textContent = $inputs.$description.value;
+  textName.textContent = nameInput.value;
+  textDescription.textContent = descriptionInput.value;
 
-  $modal.classList.add('popup_closed');
-})
-
-$modal.addEventListener('click', event => {
-  if (event.target.id === 'popup') {
-      $modal.classList.add('popup_closed');
-  }
-})
+  modal.classList.add('popup_closed');
+}
