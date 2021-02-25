@@ -1,7 +1,8 @@
-.popup {
+.imgpopup__imgtext {
   position: fixed;
   display: flex;
   font-family: 'Inter', Arial, sans-serif;
+  flex-direction: column;
   left: 0;
   top: 0;
   width: 100vw;
@@ -18,21 +19,5 @@
   }
   100% {
     opacity: 1;
-  }
-}
-
-.popup_closed {
-  transition-delay: .5s;
-  animation: close .5s ease;
-  opacity: 0;
-  visibility: hidden;
-}
-
-@keyframes close {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }

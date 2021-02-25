@@ -1,0 +1,13 @@
+.imgpopup__close {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  top: -50px;
+  right: -50px;
+  color: white;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+}
